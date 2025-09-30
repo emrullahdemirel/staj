@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hesap Makinesi</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Hesap Makinesi</h1>
+        <div class="calculator">
+            <div class="input-section">
+                <input type="number" id="sayi1" placeholder="İlk sayıyı girin">
+                <select id="islem">
+                    <option value="">İşlem Seçin</option>
+                    <option value="+">Toplama (+)</option>
+                    <option value="-">Çıkarma (-)</option>
+                    <option value="*">Çarpma (×)</option>
+                    <option value="/">Bölme (÷)</option>
+                </select>
+                <input type="number" id="sayi2" placeholder="İkinci sayıyı girin">
+                <button onclick="hesapla()">Hesapla</button>
+            </div>
+            <div class="result-section">
+                <div id="sonuc">Sonuç burada görünecek</div>
+            </div>
+        </div>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
