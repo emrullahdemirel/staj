@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alışveriş Sepeti</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🛍️ Alışveriş Sepeti</h1>
+            <div class="sepet-info">
+                <span>Sepet: </span>
+                <span id="sepetAdet">0</span> ürün -
+                <span id="sepetToplam">0</span>₺
+            </div>
+        </header>
+
+        <div class="main-content">
+            <!-- Ürün Listesi -->
+            <section class="urun-listesi">
+                <h2>Ürünler</h2>
+                <div class="arama-kutusu">
+                    <input type="text" id="aramaInput" placeholder="Ürün ara...">
+                </div>
+                <div id="urunler" class="urunler-grid"></div>
+            </section>
+
+            <!-- Sepet -->
+            <aside class="sepet">
+                <h2>🛒 Sepetim</h2>
+                <div id="sepetIcerigi" class="sepet-icerigi">
+                    <p class="bos-sepet">Sepetiniz boş</p>
+                </div>
+                <div class="sepet-ozet">
+                    <div class="toplam">
+                        <strong>Toplam: <span id="toplamFiyat">0</span>₺</strong>
+                    </div>
+                    <button id="odemeBtn" class="odeme-btn" disabled>Ödeme Yap</button>
+                </div>
+            </aside>
+        </div>
+
+        <!-- Firebase Auth Paneli -->
+        <div class="auth-panel" id="authPanel">
+            <div class="auth-content">
+                <h3 id="authTitle">Giriş Yap</h3>
+                <form id="authForm">
+                    <input type="email" id="email" placeholder="E-posta" required>
+                    <input type="password" id="password" placeholder="Şifre" required>
+                    <button type="submit" id="authSubmit">Giriş Yap</button>
+                </form>
+                <p class="auth-switch">
+                    <span id="authSwitchText">Hesabınız yok mu?</span>
+                    <a href="#" id="authSwitchLink">Kayıt Ol</a>
+                </p>
+                <div class="kullanici-info" id="kullaniciInfo" style="display: none;">
+                    <p>Hoş geldiniz: <span id="kullaniciEmail"></span></p>
+                    <button id="cikisBtn">Çıkış Yap</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="script.js"></script>
+</body>
+</html>

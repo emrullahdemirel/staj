@@ -1,0 +1,315 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f5f5f5;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    padding: 2rem;
+    border-radius: 15px;
+    margin-bottom: 2rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+header h1 {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+}
+
+.sepet-info {
+    font-size: 1.1rem;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 0.5rem 1rem;
+    border-radius: 25px;
+}
+
+.main-content {
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 2rem;
+}
+
+/* Ürün Listesi */
+.urun-listesi h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.arama-kutusu {
+    margin-bottom: 1.5rem;
+}
+
+.arama-kutusu input {
+    width: 100%;
+    padding: 0.8rem;
+    border: 2px solid #ddd;
+    border-radius: 8px;
+    font-size: 1rem;
+}
+
+.arama-kutusu input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.urunler-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    gap: 1.5rem;
+}
+
+.urun-kart {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s ease;
+}
+
+.urun-kart:hover {
+    transform: translateY(-5px);
+}
+
+.urun-kart h3 {
+    color: #333;
+    margin-bottom: 0.5rem;
+}
+
+.urun-kart p {
+    color: #666;
+    margin-bottom: 1rem;
+}
+
+.urun-fiyat {
+    font-size: 1.2rem;
+    font-weight: bold;
+    color: #667eea;
+    margin-bottom: 1rem;
+}
+
+.ekle-btn {
+    width: 100%;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s ease;
+}
+
+.ekle-btn:hover {
+    background: #5a67d8;
+}
+
+/* Sepet */
+.sepet {
+    background: white;
+    border-radius: 10px;
+    padding: 1.5rem;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    height: fit-content;
+    position: sticky;
+    top: 20px;
+}
+
+.sepet h2 {
+    margin-bottom: 1rem;
+    color: #333;
+}
+
+.sepet-icerigi {
+    max-height: 400px;
+    overflow-y: auto;
+    margin-bottom: 1rem;
+}
+
+.bos-sepet {
+    text-align: center;
+    color: #999;
+    padding: 2rem;
+}
+
+.sepet-urun {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0.8rem;
+    border-bottom: 1px solid #eee;
+}
+
+.sepet-urun:last-child {
+    border-bottom: none;
+}
+
+.urun-detay h4 {
+    margin-bottom: 0.3rem;
+    color: #333;
+}
+
+.urun-detay p {
+    color: #666;
+    font-size: 0.9rem;
+}
+
+.miktar-kontrol {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.miktar-btn {
+    background: #667eea;
+    color: white;
+    border: none;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    cursor: pointer;
+    font-size: 0.8rem;
+}
+
+.miktar {
+    min-width: 20px;
+    text-align: center;
+    font-weight: bold;
+}
+
+.sepet-ozet {
+    border-top: 2px solid #eee;
+    padding-top: 1rem;
+}
+
+.toplam {
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.odeme-btn {
+    width: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1.1rem;
+    font-weight: bold;
+    transition: transform 0.3s ease;
+}
+
+.odeme-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+}
+
+.odeme-btn:disabled {
+    background: #ccc;
+    cursor: not-allowed;
+}
+
+/* Auth Panel */
+.auth-panel {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 300px;
+    height: 100vh;
+    background: white;
+    box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+    padding: 2rem;
+    z-index: 1000;
+}
+
+.auth-content h3 {
+    margin-bottom: 1.5rem;
+    color: #333;
+    text-align: center;
+}
+
+.auth-content input {
+    width: 100%;
+    padding: 0.8rem;
+    margin-bottom: 1rem;
+    border: 2px solid #ddd;
+    border-radius: 5px;
+    font-size: 1rem;
+}
+
+.auth-content input:focus {
+    outline: none;
+    border-color: #667eea;
+}
+
+.auth-content button {
+    width: 100%;
+    background: #667eea;
+    color: white;
+    border: none;
+    padding: 0.8rem;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    margin-bottom: 1rem;
+}
+
+.auth-switch {
+    text-align: center;
+    color: #666;
+}
+
+.auth-switch a {
+    color: #667eea;
+    text-decoration: none;
+}
+
+.kullanici-info {
+    text-align: center;
+    padding: 1rem;
+    background: #f0f0f0;
+    border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .main-content {
+        grid-template-columns: 1fr;
+    }
+
+    .auth-panel {
+        width: 100%;
+        transform: translateX(100%);
+        transition: transform 0.3s ease;
+    }
+
+    .auth-panel.active {
+        transform: translateX(0);
+    }
+
+    .urunler-grid {
+        grid-template-columns: 1fr;
+    }
+
+    header {
+        flex-direction: column;
+        text-align: center;
+    }
+}
