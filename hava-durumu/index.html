@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hava Durumu Uygulaması</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🌤️ Hava Durumu</h1>
+            <p>Şehrinizin güncel hava durumunu öğrenin</p>
+        </header>
+
+        <div class="search-section">
+            <div class="search-container">
+                <input type="text" id="sehirInput" placeholder="Şehir adı girin (örn: Istanbul, Ankara)" maxlength="50">
+                <button id="araBtn" onclick="havaDurumuAra()">
+                    <span class="search-icon">🔍</span>
+                    Ara
+                </button>
+            </div>
+        </div>
+
+        <div class="loading" id="loading" style="display: none;">
+            <div class="spinner"></div>
+            <p>Hava durumu bilgileri yükleniyor...</p>
+        </div>
+
+        <div class="hava-durumu-container" id="havaDurumuContainer" style="display: none;">
+            <div class="hava-durumu-kart">
+                <div class="konum-info">
+                    <h2 id="sehirAdi"></h2>
+                    <p id="ulke"></p>
+                    <p id="tarihSaat"></p>
+                </div>
+
+                <div class="ana-bilgi">
+                    <div class="sicaklik-bolumu">
+                        <div class="hava-ikonu">
+                            <img id="havaIkonu" src="" alt="Hava durumu ikonu">
+                        </div>
+                        <div class="sicaklik">
+                            <span id="sicaklik"></span>
+                            <span class="derece">°C</span>
+                        </div>
+                    </div>
+                    <div class="durum-aciklama">
+                        <h3 id="havaDurumu"></h3>
+                        <p id="aciklama"></p>
+                    </div>
+                </div>
+
+                <div class="detay-bilgiler">
+                    <div class="detay-item">
+                        <div class="detay-ikon">🌡️</div>
+                        <div class="detay-baslik">Hissedilen</div>
+                        <div class="detay-deger" id="hissedilen"></div>
+                    </div>
+
+                    <div class="detay-item">
+                        <div class="detay-ikon">💧</div>
+                        <div class="detay-baslik">Nem</div>
+                        <div class="detay-deger" id="nem"></div>
+                    </div>
+
+                    <div class="detay-item">
+                        <div class="detay-ikon">🌪️</div>
+                        <div class="detay-baslik">Rüzgar</div>
+                        <div class="detay-deger" id="ruzgar"></div>
+                    </div>
+
+                    <div class="detay-item">
+                        <div class="detay-ikon">👁️</div>
+                        <div class="detay-baslik">Görüş</div>
+                        <div class="detay-deger" id="gorus"></div>
+                    </div>
+
+                    <div class="detay-item">
+                        <div class="detay-ikon">📊</div>
+                        <div class="detay-baslik">Basınç</div>
+                        <div class="detay-deger" id="basinc"></div>
+                    </div>
+
+                    <div class="detay-item">
+                        <div class="detay-ikon">☁️</div>
+                        <div class="detay-baslik">Bulutluluk</div>
+                        <div class="detay-deger" id="bulutluluk"></div>
+                    </div>
+                </div>
+
+                <div class="gunes-bilgileri">
+                    <div class="gunes-item">
+                        <div class="gunes-ikon">🌅</div>
+                        <div class="gunes-baslik">Gündoğumu</div>
+                        <div class="gunes-saat" id="gundogumu"></div>
+                    </div>
+                    <div class="gunes-item">
+                        <div class="gunes-ikon">🌇</div>
+                        <div class="gunes-baslik">Günbatımı</div>
+                        <div class="gunes-saat" id="gunbatimi"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="hata-mesaji" id="hataMesaji" style="display: none;">
+            <div class="hata-ikon">❌</div>
+            <h3>Hava durumu bilgisi alınamadı</h3>
+            <p id="hataDurum"></p>
+            <button onclick="havaDurumuTemizle()">Yeniden Dene</button>
+        </div>
+
+        <div class="son-aramalar" id="sonAramalar" style="display: none;">
+            <h3>Son Aramalar</h3>
+            <div class="arama-gecmisi" id="aramaGecmisi"></div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
