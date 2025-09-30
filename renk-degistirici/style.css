@@ -1,0 +1,84 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: background 0.5s ease;
+}
+
+.container {
+    background: rgba(255, 255, 255, 0.95);
+    padding: 3rem;
+    border-radius: 20px;
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+    text-align: center;
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+h1 {
+    color: #333;
+    margin-bottom: 1rem;
+    font-size: 2.5rem;
+    font-weight: bold;
+}
+
+p {
+    color: #666;
+    margin-bottom: 2rem;
+    font-size: 1.1rem;
+}
+
+button {
+    background: linear-gradient(45deg, #ff6b6b, #ee5a24);
+    color: white;
+    border: none;
+    padding: 1rem 2rem;
+    font-size: 1.2rem;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: bold;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    box-shadow: 0 5px 15px rgba(238, 90, 36, 0.4);
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 10px 25px rgba(238, 90, 36, 0.5);
+}
+
+button:active {
+    transform: translateY(-1px);
+}
+
+.renk-info {
+    margin-top: 2rem;
+    padding: 1rem;
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 10px;
+    border-left: 4px solid #667eea;
+}
+
+.renk-info p {
+    margin: 0;
+    font-size: 1rem;
+}
+
+#renkKodu {
+    font-family: 'Courier New', monospace;
+    font-weight: bold;
+    color: #333;
+    background: rgba(255, 255, 255, 0.8);
+    padding: 0.2rem 0.5rem;
+    border-radius: 5px;
+}
