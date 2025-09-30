@@ -24,6 +24,7 @@ const firebaseConfig = {
     appId: "demo-app-id"
 };
 
+
 // DOM elementleri
 const urunlerContainer = document.getElementById('urunler');
 const sepetIcerigiContainer = document.getElementById('sepetIcerigi');
@@ -81,10 +82,15 @@ function urunleriGoster(filtreliUrunler = urunler) {
             <h3>${urun.ad}</h3>
             <p>${urun.aciklama}</p>
             <div class="urun-fiyat">${urun.fiyat}₺</div>
-            <button class="ekle-btn" onclick="sepeteEkle(${urun.id})">
+            <button class="ekle-btn" data-urun-id="${urun.id}">
                 Sepete Ekle
             </button>
         `;
+
+        // Butona event listener ekle
+        const ekleBtn = urunElement.querySelector('.ekle-btn');
+        ekleBtn.addEventListener('click', () => sepeteEkle(urun.id));
+
         urunlerContainer.appendChild(urunElement);
     });
 }
@@ -159,19 +165,32 @@ function sepetGuncelle() {
     if (sepet.length === 0) {
         sepetIcerigiContainer.innerHTML = '<p class="bos-sepet">Sepetiniz boş</p>';
     } else {
-        sepetIcerigiContainer.innerHTML = sepet.map(item => `
-            <div class="sepet-urun">
+        sepetIcerigiContainer.innerHTML = '';
+
+        sepet.forEach(item => {
+            const sepetUrunDiv = document.createElement('div');
+            sepetUrunDiv.className = 'sepet-urun';
+            sepetUrunDiv.innerHTML = `
                 <div class="urun-detay">
                     <h4>${item.ad}</h4>
                     <p>${item.fiyat}₺</p>
                 </div>
                 <div class="miktar-kontrol">
-                    <button class="miktar-btn" onclick="miktarDegistir(${item.id}, ${item.miktar - 1})">-</button>
+                    <button class="miktar-btn azalt-btn" data-id="${item.id}">-</button>
                     <span class="miktar">${item.miktar}</span>
-                    <button class="miktar-btn" onclick="miktarDegistir(${item.id}, ${item.miktar + 1})">+</button>
+                    <button class="miktar-btn artir-btn" data-id="${item.id}">+</button>
                 </div>
-            </div>
-        `).join('');
+            `;
+
+            // Butonlara event listener ekle
+            const azaltBtn = sepetUrunDiv.querySelector('.azalt-btn');
+            const artirBtn = sepetUrunDiv.querySelector('.artir-btn');
+
+            azaltBtn.addEventListener('click', () => miktarDegistir(item.id, item.miktar - 1));
+            artirBtn.addEventListener('click', () => miktarDegistir(item.id, item.miktar + 1));
+
+            sepetIcerigiContainer.appendChild(sepetUrunDiv);
+        });
     }
 }
 
