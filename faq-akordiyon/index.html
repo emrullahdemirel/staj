@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SSS - Sık Sorulan Sorular</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>📋 Sık Sorulan Sorular</h1>
+            <p>Merak ettiğiniz soruların cevaplarını bulabilirsiniz</p>
+        </header>
+
+        <div class="faq-container">
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-1" aria-expanded="false">
+                    <span>Next.js nedir ve neden kullanılır?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-1" role="region">
+                    <p>Next.js, React tabanlı bir full-stack web framework'üdür. Server-side rendering (SSR), static site generation (SSG), otomatik kod bölme ve birçok performans optimizasyonu sunar. SEO dostu uygulamalar geliştirmek için ideal bir çözümdür.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-2" aria-expanded="false">
+                    <span>TypeScript'in avantajları nelerdir?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-2" role="region">
+                    <p>TypeScript, JavaScript'e statik tip sistemi ekler. Bu sayede geliştirme sırasında hataları erken yakalar, kod tamamlama özelliklerini geliştirir ve büyük projelerde kod yönetimini kolaylaştırır. Ayrıca modern IDE'lerle mükemmel entegrasyon sağlar.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-3" aria-expanded="false">
+                    <span>React Hook'ları nedir?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-3" role="region">
+                    <p>React Hook'ları, fonksiyonel bileşenlerde state ve lifecycle özelliklerini kullanmamızı sağlayan fonksiyonlardır. useState, useEffect, useContext gibi built-in hook'lar vardır. Ayrıca custom hook'lar oluşturarak kodu yeniden kullanılabilir hale getirebiliriz.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-4" aria-expanded="false">
+                    <span>Responsive tasarım neden önemlidir?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-4" role="region">
+                    <p>Responsive tasarım, web sitelerinin farklı ekran boyutlarına uyum sağlamasını garanti eder. Mobil cihaz kullanımının yaygınlaşması ile birlikte, kullanıcı deneyimini optimize etmek ve SEO performansını artırmak için kritik öneme sahiptir.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-5" aria-expanded="false">
+                    <span>API nedir ve nasıl kullanılır?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-5" role="region">
+                    <p>API (Application Programming Interface), farklı yazılım uygulamalarının birbirleriyle iletişim kurmasını sağlayan arayüzlerdir. REST API, GraphQL gibi farklı türleri vardır. Fetch API veya Axios gibi kütüphaneler kullanılarak HTTP istekleri yapılabilir.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-6" aria-expanded="false">
+                    <span>CSS Grid ve Flexbox arasındaki fark nedir?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-6" role="region">
+                    <p>Flexbox tek boyutlu (1D) layoutlar için idealdir ve elementleri bir satır veya sütun boyunca hizalar. CSS Grid ise iki boyutlu (2D) layoutlar için tasarlanmıştır ve karmaşık grid yapıları oluşturmaya olanak sağlar. Her ikisi de modern web geliştirmede önemli araçlardır.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-7" aria-expanded="false">
+                    <span>Git versiyon kontrolü neden önemlidir?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-7" role="region">
+                    <p>Git, kod değişikliklerini takip eder, ekip çalışmasını kolaylaştırır ve proje geçmişini güvenle saklar. Branch'ler sayesinde paralel geliştirme yapılabilir, merge conflict'ler çözülebilir ve gerektiğinde önceki versiyonlara geri dönülebilir.</p>
+                </div>
+            </div>
+
+            <div class="faq-item">
+                <div class="faq-question" aria-controls="faq-answer-8" aria-expanded="false">
+                    <span>Firebase nedir ve hangi hizmetleri sunar?</span>
+                    <span class="faq-icon">+</span>
+                </div>
+                <div class="faq-answer" id="faq-answer-8" role="region">
+                    <p>Firebase, Google'ın Backend-as-a-Service (BaaS) platformudur. Authentication, Firestore Database, Storage, Hosting, Functions ve Analytics gibi hizmetler sunar. Web ve mobil uygulamalar için kapsamlı bir geliştirme ekosistemi sağlar.</p>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p>Başka sorularınız için bize ulaşabilirsiniz.</p>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

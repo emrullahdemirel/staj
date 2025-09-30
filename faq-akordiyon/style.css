@@ -1,0 +1,234 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    min-height: 100vh;
+    line-height: 1.6;
+}
+
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+header {
+    text-align: center;
+    color: white;
+    margin-bottom: 3rem;
+}
+
+header h1 {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+header p {
+    font-size: 1.1rem;
+    opacity: 0.9;
+}
+
+.faq-container {
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    overflow: hidden;
+}
+
+.faq-item {
+    border-bottom: 1px solid #e5e5e5;
+    transition: all 0.3s ease;
+}
+
+.faq-item:last-child {
+    border-bottom: none;
+}
+
+.faq-item:hover {
+    background-color: #f8f9fa;
+}
+
+.faq-question {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1.5rem 2rem;
+    cursor: pointer;
+    font-weight: 600;
+    color: #333;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.faq-question:hover {
+    background-color: #f0f2ff;
+    color: #667eea;
+}
+
+.faq-question:focus {
+    outline: 2px solid #667eea;
+    outline-offset: -2px;
+}
+
+.faq-icon {
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #667eea;
+    transition: transform 0.3s ease, color 0.3s ease;
+    margin-left: 1rem;
+    flex-shrink: 0;
+}
+
+.faq-item.active .faq-icon {
+    transform: rotate(45deg);
+    color: #5a67d8;
+}
+
+.faq-answer {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s ease, padding 0.3s ease;
+    background-color: #fafafa;
+    border-top: 1px solid #e5e5e5;
+}
+
+.faq-item.active .faq-answer {
+    max-height: 300px;
+    padding: 1.5rem 2rem;
+}
+
+.faq-answer p {
+    color: #555;
+    font-size: 0.95rem;
+    margin: 0;
+    line-height: 1.7;
+}
+
+footer {
+    text-align: center;
+    color: white;
+    margin-top: 3rem;
+    opacity: 0.8;
+}
+
+footer p {
+    font-size: 1rem;
+}
+
+/* Animasyonlar */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.faq-container {
+    animation: fadeIn 0.6s ease;
+}
+
+.faq-item {
+    animation: fadeIn 0.6s ease;
+    animation-delay: calc(var(--index) * 0.1s);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .container {
+        padding: 1rem;
+    }
+
+    header h1 {
+        font-size: 2rem;
+    }
+
+    .faq-question {
+        padding: 1rem 1.5rem;
+        font-size: 0.95rem;
+    }
+
+    .faq-answer {
+        font-size: 0.9rem;
+    }
+
+    .faq-item.active .faq-answer {
+        padding: 1rem 1.5rem;
+    }
+
+    .faq-icon {
+        font-size: 1.3rem;
+    }
+}
+
+@media (max-width: 480px) {
+    header h1 {
+        font-size: 1.8rem;
+    }
+
+    .faq-question {
+        padding: 0.8rem 1rem;
+        flex-direction: column;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .faq-question span:first-child {
+        margin-bottom: 0.5rem;
+    }
+
+    .faq-icon {
+        position: absolute;
+        top: 50%;
+        right: 1rem;
+        transform: translateY(-50%);
+        margin-left: 0;
+    }
+
+    .faq-item.active .faq-icon {
+        transform: translateY(-50%) rotate(45deg);
+    }
+}
+
+/* Erişilebilirlik */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Focus indicators */
+.faq-question:focus-visible {
+    outline: 3px solid #667eea;
+    outline-offset: 2px;
+}
+
+/* High contrast mode support */
+@media (prefers-contrast: high) {
+    .faq-item {
+        border-bottom: 2px solid #000;
+    }
+
+    .faq-question {
+        color: #000;
+    }
+
+    .faq-answer {
+        background-color: #fff;
+    }
+
+    .faq-answer p {
+        color: #000;
+    }
+}
