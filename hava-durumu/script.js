@@ -11,36 +11,6 @@ const hataMesaji = document.getElementById('hataMesaji');
 const sonAramalar = document.getElementById('sonAramalar');
 const aramaGecmisi = document.getElementById('aramaGecmisi');
 
-// Hava durumu verileri için interface
-interface HavaDurumuVerisi {
-    name: string;
-    sys: {
-        country: string;
-        sunrise: number;
-        sunset: number;
-    };
-    main: {
-        temp: number;
-        feels_like: number;
-        humidity: number;
-        pressure: number;
-    };
-    weather: Array<{
-        main: string;
-        description: string;
-        icon: string;
-    }>;
-    wind: {
-        speed: number;
-        deg?: number;
-    };
-    visibility?: number;
-    clouds: {
-        all: number;
-    };
-    dt: number;
-}
-
 // Demo veriler (API anahtarı olmadığında kullanılacak)
 const demoVeriler = {
     'istanbul': {
@@ -72,11 +42,34 @@ const demoVeriler = {
         visibility: 10000,
         clouds: { all: 5 },
         dt: Date.now() / 1000
+    },
+    'bursa': {
+        name: 'Bursa',
+        sys: { country: 'TR', sunrise: 1640837000, sunset: 1640871000 },
+        main: { temp: 8, feels_like: 5, humidity: 68, pressure: 1014 },
+        weather: [{ main: 'Rain', description: 'hafif yağmur', icon: '10d' }],
+        wind: { speed: 3.0, deg: 200 },
+        visibility: 9000,
+        clouds: { all: 60 },
+        dt: Date.now() / 1000
+    },
+    'antalya': {
+        name: 'Antalya',
+        sys: { country: 'TR', sunrise: 1640838000, sunset: 1640872000 },
+        main: { temp: 18, feels_like: 17, humidity: 55, pressure: 1011 },
+        weather: [{ main: 'Clear', description: 'güneşli', icon: '01d' }],
+        wind: { speed: 2.5, deg: 270 },
+        visibility: 10000,
+        clouds: { all: 10 },
+        dt: Date.now() / 1000
     }
 };
 
 // Sayfa yüklendiğinde
 document.addEventListener('DOMContentLoaded', function() {
+    // Buton tıklama eventi
+    araBtn.addEventListener('click', havaDurumuAra);
+
     // Enter tuşu ile arama
     sehirInput.addEventListener('keypress', function(e) {
         if (e.key === 'Enter') {
@@ -95,7 +88,7 @@ document.addEventListener('DOMContentLoaded', function() {
 });
 
 // Hava durumu arama fonksiyonu
-async function havaDurumuAra() {
+function havaDurumuAra() {
     const sehir = sehirInput.value.trim();
 
     if (!sehir) {
@@ -106,43 +99,27 @@ async function havaDurumuAra() {
     // Loading göster
     gosterLoading();
 
-    try {
-        // Demo için localStorage kontrolü
-        const demoSehir = sehir.toLowerCase().replace(/ı/g, 'i');
+    // Demo veri kontrolü
+    const demoSehir = sehir.toLowerCase()
+        .replace(/ı/g, 'i')
+        .replace(/ş/g, 's')
+        .replace(/ç/g, 'c')
+        .replace(/ğ/g, 'g')
+        .replace(/ü/g, 'u')
+        .replace(/ö/g, 'o');
 
+    // Simulate API call delay
+    setTimeout(() => {
         if (demoVeriler[demoSehir]) {
             // Demo veri kullan
             const veri = demoVeriler[demoSehir];
             havaDurumuGoster(veri);
             sonAramaEkle(sehir);
         } else {
-            // Gerçek API çağrısı (demo amaçlı hata göster)
-            throw new Error('API anahtarı gerekli veya şehir bulunamadı');
+            // Şehir bulunamadı
+            hataGoster(`"${sehir}" şehri bulunamadı. Lütfen demo şehirleri deneyin: Istanbul, Ankara, Izmir, Bursa, Antalya`);
         }
-
-    } catch (error) {
-        console.error('Hava durumu verileri alınamadı:', error);
-        hataGoster('Şehir bulunamadı veya API hatası oluştu. Demo şehirleri deneyin: Istanbul, Ankara, Izmir');
-    }
-}
-
-// Gerçek API çağrısı (yorum olarak bırakıldı)
-async function gercekAPICall(sehir) {
-    const url = `${BASE_URL}?q=${encodeURIComponent(sehir)}&appid=${API_KEY}&units=metric&lang=tr`;
-
-    const response = await fetch(url);
-
-    if (!response.ok) {
-        if (response.status === 404) {
-            throw new Error('Şehir bulunamadı');
-        } else if (response.status === 401) {
-            throw new Error('API anahtarı geçersiz');
-        } else {
-            throw new Error('Hava durumu verileri alınamadı');
-        }
-    }
-
-    return await response.json();
+    }, 1000);
 }
 
 // Hava durumu verilerini gösterme fonksiyonu
@@ -184,7 +161,7 @@ function havaDurumuGoster(veri) {
 
 // Loading göster/gizle
 function gosterLoading() {
-    loading.style.display = 'block';
+    loading.style.display = 'flex';
     havaDurumuContainer.style.display = 'none';
     hataMesaji.style.display = 'none';
 }
@@ -213,7 +190,7 @@ function havaDurumuTemizle() {
 function sonAramaEkle(sehir) {
     let aramalar = JSON.parse(localStorage.getItem('sonAramalar') || '[]');
 
-    // Dublicate'leri kaldır
+    // Duplicate'leri kaldır
     aramalar = aramalar.filter(item => item.toLowerCase() !== sehir.toLowerCase());
 
     // Yeni aramayı başa ekle
@@ -294,37 +271,12 @@ function showMessage(message, type = 'success') {
         if (messageDiv.parentNode) {
             messageDiv.style.animation = 'slideDown 0.3s ease reverse';
             setTimeout(() => {
-                messageDiv.parentNode.removeChild(messageDiv);
+                if (messageDiv.parentNode) {
+                    messageDiv.parentNode.removeChild(messageDiv);
+                }
             }, 300);
         }
     }, 3000);
-}
-
-// Konum tabanlı hava durumu (isteğe bağlı)
-function konumHavaDurumu() {
-    if (navigator.geolocation) {
-        gosterLoading();
-        navigator.geolocation.getCurrentPosition(
-            async (position) => {
-                const lat = position.coords.latitude;
-                const lon = position.coords.longitude;
-
-                try {
-                    // Konum tabanlı API çağrısı (demo için Istanbul göster)
-                    const veri = demoVeriler['istanbul'];
-                    havaDurumuGoster(veri);
-                    showMessage('Konumunuz için hava durumu gösteriliyor', 'success');
-                } catch (error) {
-                    hataGoster('Konum bilgisi alınamadı');
-                }
-            },
-            (error) => {
-                hataGoster('Konum erişimi reddedildi');
-            }
-        );
-    } else {
-        hataGoster('Tarayıcınız konum bilgisini desteklemiyor');
-    }
 }
 
 // Klavye kısayolları
