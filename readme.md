@@ -309,4 +309,4 @@ Bu projeler eğitim amaçlı geliştirilmiştir ve MIT lisansı altındadır.
 **Firma**: Kalite İnternet Bilgisayar ve Uygulama
 **Üniversite**: Ondokuz Mayıs Üniversitesi
 
-🤖 *Bu projeler modern web geliştirme teknikleri kullanılarak geliştirilmiştir.*
+*Bu projeler modern web geliştirme teknikleri kullanılarak geliştirilmiştir.*
